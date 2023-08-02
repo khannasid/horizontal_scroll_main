@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+"use client";
+import { useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+import Loader from './components/loader';
+import Hero from './components/hero';
 
-function App() {
+const App = () => {
+  const [timeline, setTimeline] = useState(null);
+
+  useEffect(()=>{
+
+      const tl = gsap.timeline();
+      console.log("timeline");
+      setTimeline(tl);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Loader timeline={timeline}/>
+      <Hero/>
     </div>
   );
 }
